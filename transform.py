@@ -9,6 +9,9 @@ def transform_xyz(xyz) -> tuple:
     '''
 
 def vector_to_rgb(psi) -> tuple:
+    if psi == [-1, -1]:
+        return (-1,-1,-1)
+
     psi_polar=[0,0]
     psi_polar[0] = complex_to_polar(psi[0])
     psi_polar[1] = complex_to_polar(psi[1])

@@ -1,0 +1,2 @@
+# wave function for qubits with ids (least to most significant): 1
+## Qubits were entangled with an external qubit. Cannot dump corresponding wave function. ##
