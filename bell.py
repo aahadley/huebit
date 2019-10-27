@@ -20,7 +20,7 @@ def run_sim():
     return res
 
 def build_matrix_bell():
-    
+
     run_sim()
     get_states = parse.get_states
 
@@ -28,7 +28,7 @@ def build_matrix_bell():
     ZERO_RGB = (0,0,0)
 
     # populate the initial states
-    initial = [ transform.vector_to_rgb(get_states("00.txt")), 
+    initial = [ transform.vector_to_rgb(get_states("00.txt")),
                 transform.vector_to_rgb(get_states("01.txt")),
                 ZERO_RGB,
                 ZERO_RGB ]
@@ -46,7 +46,7 @@ def build_matrix_bell():
            transform.vector_to_rgb(get_states("11.txt")),
            ZERO_RGB,
            ZERO_RGB]
-    
+
     matrix.append(h1)
 
     # cnot
@@ -68,7 +68,7 @@ def build_matrix_bell():
                    MEAS_COLOR,
                    ZERO_RGB,
                    ZERO_RGB])
-    
+
     # final result
     m1 = [ transform.vector_to_rgb(get_states("30.txt")),
            transform.vector_to_rgb(get_states("31.txt")),
@@ -82,9 +82,9 @@ def build_matrix_bell():
 m = build_matrix_bell()
 
 res = json.dumps(m, ensure_ascii=True)
-with serial.Serial() as s:
-    s.baudrate = 9600
-    s.port = "COM5"
-    s.open()
-    s.write(res)
-    
+
+ser = serial.Serial()
+ser.baudrate = 9600
+ser.port = 'COM3'
+ser.open()
+ser.write(bytes(res,"utf-8"))
