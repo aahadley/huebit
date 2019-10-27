@@ -84,7 +84,7 @@ m = build_matrix_bell()
 res = json.dumps(m, ensure_ascii=True)
 with serial.Serial() as s:
     s.baudrate = 9600
-    s.port = "COM6"
+    s.port = "COM5"
     s.open()
     s.write(res)
     
