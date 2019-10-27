@@ -29,7 +29,8 @@ void setup()
 }
 
 void loop() {
- 
-    
-
+ if (Serial.available() > 0) 
+    {
+      
+    }
 }
