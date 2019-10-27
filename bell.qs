@@ -15,6 +15,7 @@ namespace Quantum.Bell
 operation BellTest (count : Int, initial: Result) : (Int, Int, Int) {
         mutable numOnes = 0;
         mutable agree = 0;
+        
         using (qubits = Qubit[2]) {
             for (test in 1..count)
             {
@@ -23,12 +24,15 @@ operation BellTest (count : Int, initial: Result) : (Int, Int, Int) {
 
                 DumpRegister("00.txt", qubits[0..0]);
                 DumpRegister("01.txt", qubits[0..0]);
+
                 H(qubits[0]);
                 DumpRegister("10.txt", qubits[0..0]);
                 DumpRegister("11.txt", qubits[1..1]);
+
                 CNOT(qubits[0],qubits[1]);
                 DumpRegister("20.txt", qubits[0..0]);
                 DumpRegister("21.txt", qubits[1..1]);
+
                 let res = M (qubits[0]);
                 DumpRegister("30.txt", qubits[0..0]);
                 DumpRegister("31.txt", qubits[1..1]);
